@@ -15,15 +15,6 @@ const FonteDeDados = new DataSource({
     entities: [Criptomoeda],
     subscribers: [],
     migrations: [],
-
-    //Para testes locais:
-    // type: "sqlite",
-    // database: "./banco_de_dados.sqlite",
-    // synchronize: true,
-    // logging: false,
-    // entities: [Criptomoeda],
-    // subscribers: [],
-    // migrations: [],
 })
 
 export const BancoDeDados = FonteDeDados.initialize().then((f) => { return f.manager; });

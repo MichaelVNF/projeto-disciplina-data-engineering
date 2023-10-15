@@ -24,7 +24,7 @@ export class AlertaEvent {
         const salvo = await this.salvarNoBancoDeDados(criptomoeda);
 
         if (salvo) {
-            //const criptomoeda = await this.lerUltimoRegistroBancoDeDados();
+            const criptomoeda = await this.lerUltimoRegistroBancoDeDados();
 
             if (criptomoeda != null) {
                 const alertar = criptomoeda.valor < this.valorAlerta;
@@ -92,16 +92,16 @@ export class AlertaEvent {
         return true;
     }
 
-    // private async lerUltimoRegistroBancoDeDados() {
-    //     this.console.log('Lendo último registro no banco de dados');
+    private async lerUltimoRegistroBancoDeDados() {
+        this.console.log('Lendo último registro no banco de dados');
 
-    //     const criptomoeda = await (await BancoDeDados).findOne(Criptomoeda, {
-    //         where: {},
-    //         order: { id: 'DESC' }
-    //     });
+        const criptomoeda = await (await BancoDeDados).findOne(Criptomoeda, {
+            where: {},
+            order: { id: 'DESC' }
+        });
 
-    //     return criptomoeda;
-    // }
+        return criptomoeda;
+    }
 
     private async enviarEmailDeAlerta(valorCriptmoeda: number, valorAlerta: number) {
         this.console.log('Enviando e-mail de alerta');
